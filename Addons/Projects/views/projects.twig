@@ -1,0 +1,21 @@
+
+{{ set_assets('applications/Projects/Addons/Projects/assets/css/style.css') }}
+<ul class="nav">
+    {% if projects|length > 0 %}
+        {% for project in projects %}
+
+            {% set percent = (project.total_completed/project.total_tasks * 100)|round(1)  %}
+
+            {% if not percent %}
+                {% set percent = 1 %}
+            {% endif %}
+
+            <li>
+                <a href="{{ generate_url('projects.projects.detail', {'id':project.id}) }}">
+                    {{ project.title }}
+                    <i class="badge badge-aqua pull-right">{{ percent }}%</i>
+                </a>
+            </li>
+        {% endfor %}
+    {% endif %}
+</ul>

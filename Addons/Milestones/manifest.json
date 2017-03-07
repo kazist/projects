@@ -1,0 +1,10 @@
+{
+    "name": "milestones",
+    "title": "Milestones Listing",
+    "explanation": "Milestones Listing",
+    "description": "Milestones Listing",
+    "version": 1,
+    "icon": "assets\/projects\/addons\/milestones\/icon.png",
+    "extension": "addon",
+    "path": "projects\/addons\/milestones\/"
+}

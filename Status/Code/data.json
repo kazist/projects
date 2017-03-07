@@ -1,0 +1,25 @@
+[{
+        "tracking_id": "1",
+        "title": "TODO",
+        "ordering": "1",
+        "color": "f25c4b",
+        "published": "1"
+    }, {
+        "tracking_id": "2",
+        "title": "In Progress",
+        "ordering": "2",
+        "color": "FFFF33",
+        "published": "1"
+    }, {
+        "tracking_id": "3",
+        "title": "Done",
+        "ordering": "3",
+        "color": "009933",
+        "published": "1"
+    }, {
+        "tracking_id": "4",
+        "title": "Closed",
+        "ordering": "4",
+        "color": "808080",
+        "published": "1"
+    }]

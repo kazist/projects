@@ -1,0 +1,13 @@
+{
+    "name": "categories",
+    "title": "Projects Categories",
+    "explanation": "Projects Categories",
+    "description": "Projects Categories",
+    "version": 4,
+    "has_view": "1",
+    "tie_field": "0",
+    "email_on_new": "0",
+    "email_on_edit": "0",
+    "email_on_delete": "0",
+    "date_file_modified": "2016-12-08 11:21:05"
+}

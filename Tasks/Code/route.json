@@ -1,0 +1,242 @@
+{
+    "frontend": [{
+            "title": "Task List",
+            "description": "Management of Tasks.",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\TasksController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "projects.tasks",
+            "route": "projects/tasks",
+            "arguments": "",
+            "keywords": "task, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Task  ",
+            "description": "Add Task .",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\TasksController::addAction",
+            "unique_name": "projects.tasks.add",
+            "route": "projects/tasks/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "task, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_addown"],
+                "ADMIN": ["can_add", "can_addown"],
+                "MODERATOR": ["can_add", "can_addown"],
+                "USER": ["can_add", "can_addown"]
+            }
+        }, {
+            "title": "Task Detail: {{ item.name }}",
+            "description": "Task Detail: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\TasksController::detailAction",
+            "unique_name": "projects.tasks.detail",
+            "route": "projects/tasks/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Task Delete: {{ item.name }}",
+            "description": "Task Delete: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\TasksController::deleteAction",
+            "unique_name": "projects.tasks.delete",
+            "route": "projects/tasks/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"],
+                "MODERATOR": ["can_delete", "can_deleteown"],
+                "USER": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Task Edit: {{ item.name }}",
+            "description": "Task Edit: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\TasksController::editAction",
+            "unique_name": "projects.tasks.edit",
+            "route": "projects/tasks/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, edit, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Task Save: {{ item.name }}",
+            "description": "Task Save: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\TasksController::saveAction",
+            "unique_name": "projects.tasks.save",
+            "route": "projects/tasks/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_write", "can_writeown"]
+            }
+        }],
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\Admin\\TasksController::taskAction",
+            "unique_name": "admin.projects.tasks.task",
+            "route": "admin/projects/tasks/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "tasks, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Task List",
+            "description": "Management of Tasks.",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\Admin\\TasksController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.projects.tasks",
+            "route": "admin/projects/tasks",
+            "arguments": "",
+            "keywords": "task, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Task  ",
+            "description": "Add Task .",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\Admin\\TasksController::addAction",
+            "unique_name": "admin.projects.tasks.add",
+            "route": "admin/projects/tasks/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "task, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Task {{ item.name }}",
+            "description": "Edit Task {{ item.name }}.",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\Admin\\TasksController::editAction",
+            "unique_name": "admin.projects.tasks.edit",
+            "route": "admin/projects/tasks/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Task Detail: {{ item.name }}",
+            "description": "Task Detail: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\Admin\\TasksController::detailAction",
+            "unique_name": "admin.projects.tasks.detail",
+            "route": "admin/projects/tasks/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Task Delete: {{ item.name }}",
+            "description": "Task Delete: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\Admin\\TasksController::deleteAction",
+            "unique_name": "admin.projects.tasks.delete",
+            "route": "admin/projects/tasks/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Task Save: {{ item.name }}",
+            "description": "Task Save: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Code\\Controllers\\Admin\\TasksController::saveAction",
+            "unique_name": "admin.projects.tasks.save",
+            "route": "admin/projects/tasks/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

@@ -1,0 +1,133 @@
+Projects\Tasks\Code\Tables\Tasks:
+  table: projects_tasks
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    title:
+      name: title
+      type: string
+      length: 255
+      nullable: false
+    project_id:
+      name: project_id
+      type: integer
+      length: 11
+      nullable: true
+    milestone_id:
+      name: milestone_id
+      type: integer
+      length: 11
+      nullable: true
+    priority_id:
+      name: priority_id
+      type: integer
+      length: 11
+      nullable: true
+    type_id:
+      name: type_id
+      type: integer
+      length: 11
+      nullable: true
+    duration_id:
+      name: duration_id
+      type: integer
+      length: 11
+      nullable: true
+    task:
+      name: task
+      type: text
+      nullable: true
+    url:
+      name: url
+      type: string
+      length: 255
+      nullable: true
+    start_time:
+      name: start_time
+      type: datetime
+      nullable: true
+    end_time:
+      name: end_time
+      type: datetime
+      nullable: true
+    status:
+      name: status
+      type: string
+      length: 255
+      nullable: true
+    total_subtasks:
+      name: total_subtasks
+      type: integer
+      length: 11
+      nullable: true
+    total_comments:
+      name: total_comments
+      type: integer
+      length: 11
+      nullable: true
+    completed_subtasks:
+      name: completed_subtasks
+      type: integer
+      length: 11
+      nullable: true
+    date_status_changed:
+      name: date_status_changed
+      type: datetime
+      nullable: true
+    status_changed_by:
+      name: status_changed_by
+      type: integer
+      length: 11
+      nullable: true
+    closed:
+      name: closed
+      type: integer
+      length: 11
+      nullable: true
+    closed_date:
+      name: closed_date
+      type: datetime
+      nullable: true
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: true
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: true
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: true
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: true
+  indexes:
+    project_id_index:
+      columns: [project_id]
+    milestone_id_index:
+      columns: [milestone_id]
+    priority_id_index:
+      columns: [priority_id]
+    type_id_index:
+      columns: [type_id]
+    duration_id_index:
+      columns: [duration_id]
+    status_index:
+      columns: [status]
+    status_changed_by_index:
+      columns: [status_changed_by]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks

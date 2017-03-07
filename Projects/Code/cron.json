@@ -1,0 +1,14 @@
+[{
+        "tracking_id": "1",
+        "controller": "Projects\\Projects\\Code\\Controllers\\ProjectsController",
+        "function": "sendDailyTaskSummaryAction",
+        "unique_name": "projects.projects.senddailytasksummary",
+        "minute": "0",
+        "hour": "0",
+        "day_of_month": "*",
+        "month": "*",
+        "day_of_week": "1-5",
+        "year": "*",
+        "next_run_time": "",
+        "published": 1
+    }]

@@ -1,0 +1,10 @@
+{
+    "name": "taskchart",
+    "title": "Taskchart Listing",
+    "explanation": "Taskchart Listing",
+    "description": "Taskchart Listing",
+    "version": 1,
+    "icon": "assets\/projects\/addons\/taskchart\/icon.png",
+    "extension": "addon",
+    "path": "projects\/addons\/taskchart\/"
+}

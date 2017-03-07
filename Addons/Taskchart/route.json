@@ -1,0 +1,22 @@
+{
+    "frontend": [{
+            "title": "Taskchart List",
+            "description": "Management of Taskchart.",
+            "controller": "Projects\\Addons\\Taskchart\\Controllers\\TaskchartController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "projects.addons.taskchart",
+            "route": "projects/addons/taskchart",
+            "arguments": "",
+            "keywords": "projects, taskchart, addons",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }]
+
+} 	

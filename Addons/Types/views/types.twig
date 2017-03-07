@@ -1,0 +1,8 @@
+
+{{ set_assets('applications/Projects/Addons/Types/assets/css/style.css') }}
+
+{% if types|length > 0 %}
+    {% for type in types %}
+        {{ type.title }}({{ type.total_tasks }}), 
+    {% endfor %}
+{% endif %}

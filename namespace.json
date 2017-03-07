@@ -1,0 +1,90 @@
+{
+    "ProjectsProjects": {
+        "namespace": "Projects\\Projects",
+        "controller": "ProjectsController"
+    },
+    "ProjectsProjectsCategories": {
+        "namespace": "Projects\\Projects\\Categories",
+        "controller": "CategoriesController"
+    },
+    "ProjectsProjectsDocuments": {
+        "namespace": "Projects\\Projects\\Documents",
+        "controller": "DocumentsController"
+    },
+    "ProjectsProjectsComponents": {
+        "namespace": "Projects\\Projects\\Components",
+        "controller": "ComponentsController"
+    },
+    "ProjectsProjectsMilestones": {
+        "namespace": "Projects\\Projects\\Milestones",
+        "controller": "MilestonesController"
+    },
+    "ProjectsProjectsPhrases": {
+        "namespace": "Projects\\Projects\\Phrases",
+        "controller": "PhrasesController"
+    },
+    "ProjectsMilestones": {
+        "namespace": "Projects\\Milestones",
+        "controller": "MilestonesController"
+    },
+    "ProjectsTasks": {
+        "namespace": "Projects\\Tasks",
+        "controller": "TasksController"
+    },
+    "ProjectsTasksAssignments": {
+        "namespace": "Projects\\Tasks\\Assignments",
+        "controller": "AssignmentsController"
+    },
+    "ProjectsPriorities": {
+        "namespace": "Projects\\Priorities",
+        "controller": "PrioritiesController"
+    },
+    "ProjectsTasksVotes": {
+        "namespace": "Projects\\Tasks\\Votes",
+        "controller": "VotesController"
+    },
+    "ProjectsTasksWatchers": {
+        "namespace": "Projects\\Tasks\\Watchers",
+        "controller": "WatchersController"
+    },
+    "ProjectsTasksDocuments": {
+        "namespace": "Projects\\Tasks\\Documents",
+        "controller": "DocumentsController"
+    },
+    "ProjectsTypes": {
+        "namespace": "Projects\\Types",
+        "controller": "TypesController"
+    },
+    "ProjectsCategories": {
+        "namespace": "Projects\\Categories",
+        "controller": "CategoriesController"
+    },
+    "ProjectsMembers": {
+        "namespace": "Projects\\Members",
+        "controller": "MembersController"
+    },
+    "ProjectsProjectsMembers": {
+        "namespace": "Projects\\Projects\\Members",
+        "controller": "MembersController"
+    },
+    "ProjectsStatus": {
+        "namespace": "Projects\\Status",
+        "controller": "StatusController"
+    },
+    "ProjectsClients": {
+        "namespace": "Projects\\Clients",
+        "controller": "ClientsController"
+    },
+    "ProjectsClientsMembers": {
+        "namespace": "Projects\\Clients\\Members",
+        "controller": "MembersController"
+    },
+    "ProjectsTasksSubtasks": {
+        "namespace": "Projects\\Tasks\\Subtasks",
+        "controller": "SubtasksController"
+    },
+    "ProjectsDurations": {
+        "namespace": "Projects\\Durations",
+        "controller": "DurationsController"
+    }
+}

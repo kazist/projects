@@ -1,0 +1,329 @@
+{# empty Twig template #}
+
+{% import "form.macro.twig" as forms %}
+
+{{ set_assets('applications/Projects/assets/css/projects.css') }}
+{{ set_assets('applications/Projects/assets/js/projects.js') }}
+
+{% set percent = (item.completed_subtasks/item.total_subtasks * 100)|round(1) %}
+
+{% if not percent %}
+    {% set percent = 1 %}
+{% endif %}
+
+{% set projects = json_object.fields.project_id.parameters.options %}
+{% set milestones = json_object.fields.milestone_id.parameters.options %}
+{% set priorities = json_object.fields.priority_id.parameters.options %}
+{% set types = json_object.fields.type_id.parameters.options %}
+{% set status = json_object.fields.status.parameters.options %}
+{% set search = document.search %}
+
+<br>
+
+<form class="task-single-form form-horizontal" action="{{ generate_url('projects.tasks.save') }}" method="POST">
+
+    <div class="task-single">
+
+        <div class="col-sm-8">
+            <h4 class="component-header">
+                {{ item.title }}
+                <a class="btn btn-primary btn-xs" href="{{ generate_url('projects.tasks.edit', {'id':item.id}) }}">
+                    <i class="fa fa-pencil"></i> 
+                    Edit
+                </a>
+            </h4>
+        </div>
+
+        <div class="col-sm-4">
+
+            <div style="display:inline-block">
+                <b>Status:</b> 
+                <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                    <span> {{ item.status_title|default('Not Set')|truncate(10) }} </span>
+                    <span class="caret"></span> 
+                </a>
+                <ul class="dropdown-menu">
+                    {% for status_item in status %}
+                        <li> 
+                            <a class="change-status" href="#" task_id="{{ item.id }}" status="{{ status_item.value }}" label="{{ status_item.text|truncate(10)  }}">
+                                {% if status_item.value == item.status %}
+                                    <i class="fa fa-check text-red"></i>
+                                {% else %}
+                                    <i class="fa fa-circle-o"></i>
+                                {% endif %}
+                                {{ status_item.text }} &nbsp;
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+
+            <a class="btn {{ (item.closed)?'btn-default':'btn-danger' }} btn-xs pull-right close_open_task" href="#" task_id="{{ item.id }}"  closed="{{ (item.closed) ? 0 : 1 }}" label="{{ (not item.closed)? 'Open' : 'Close' }} ">
+                <i class="fa fa-arrow-right"></i>
+                <span class="close_open_label">{{ (item.closed)? 'Open' : 'Close' }} </span>
+            </a>
+
+        </div>
+        <div class="clear-both"></div>
+
+
+
+
+
+        <div>
+            <div class="col-sm-7">
+
+                {{ item.task|striptags|raw }}
+
+                <div>
+                    <b>Start:</b> 
+                    <i>
+                        {{ item.start_time|date('dS M y') }}  
+                    </i>
+                    <b>End:</b> 
+                    <i>
+                        {{ item.end_time|date('dS M y') }}
+                    </i>
+                </div>
+
+                <br>
+                <h4>
+                    SubTasks  <a class="btn btn-success btn-xs pull-right" href="#"  data-toggle="modal" data-target="#manageTaskModal">
+                        <i class="fa fa-gears"></i>
+                        Manage Subtask
+                    </a>
+                </h4>
+
+                <table class="table table-responsive table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Sub Task</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% if item.subtasks|length > 0 %}
+                            {% for task in item.subtasks %}
+
+
+                                {% set percent = total_completed/total_tasks * 100 %}
+
+                                {% if not percent %}
+                                    {% set percent = 1 %}
+                                {% endif %}
+
+                                <tr>
+                                    <td>
+                                        {{ task.subtask }}
+                                    </td>
+                                    <td>
+                                        <a class="btn {{ (task.closed)?'btn-default':'btn-danger' }} btn-xs pull-right close_open_subtask" href="#" subtask_id="{{ task.id }}"  closed="{{ (task.closed) ? 0 : 1 }}" label="{{ (not task.closed)? 'Open' : 'Close' }} ">
+                                            <i class="fa fa-arrow-right"></i>
+                                            <span class="close_open_subtask_label">{{ (task.closed)? 'Open' : 'Close' }} </span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <td colspan="10">No Records</td>
+                            </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+
+
+            </div>
+
+            <div class="col-sm-5">
+
+                <div class="col-xs-12">
+                    <label class="col-xs-4"> <b>Type:</b> </label>
+                    <div class="col-xs-8">
+                        <div class="task-setting">
+                            <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                                <span class="task-setting-label"> {{ item.type_id_title|default('Not Set')|truncate(10) }} </span>
+                                <span class="caret"></span> 
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for type in types %}
+                                    <li> 
+                                        <a class="change-type" href="#" task_id="{{ item.id }}" type_id="{{ type.value }}" label="{{ type.text|truncate(10)  }}">
+                                            {% if type.value == item.type_id %}
+                                                <i class="fa fa-check text-red"></i>
+                                            {% else %}
+                                                <i class="fa fa-circle-o"></i>
+                                            {% endif %}
+                                            {{ type.text }} &nbsp;
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <label class="col-xs-4"><b>Project:</b> </label>
+                    <div class="col-xs-8">
+                        <div class="task-setting">
+                            <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                                <span class="task-setting-label"> {{ item.project_id_title|default('Not Set')|truncate(10) }} </span>
+                                <span class="caret"></span> 
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                {% for project in projects %}
+                                    <li> 
+                                        <a class="change-project" href="#" task_id="{{ item.id }}" project_id="{{ project.value }}">
+                                            {% if project.value == item.project_id %}
+                                                <i class="fa fa-check text-red"></i>
+                                            {% else %}
+                                                <i class="fa fa-circle-o"></i>
+                                            {% endif %}
+                                            {{ project.text }} &nbsp;
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <label class="col-xs-4"><b>Milestone:</b> </label>
+                    <div class="col-xs-8">
+                        <div class="task-setting">
+                            <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                                <span class="task-setting-label"> {{ item.milestone_id_title|default('Not Set')|truncate(10) }} </span>
+                                <span class="caret"></span> 
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for milestone in milestones %}
+                                    <li> 
+                                        <a class="change-milestone" href="#" task_id="{{ item.id }}" milestone_id="{{ milestone.value }}" label="{{ milestone.text|truncate(10)  }}">
+                                            {% if milestone.value == item.milestone_id %}
+                                                <i class="fa fa-check text-red"></i>
+                                            {% else %}
+                                                <i class="fa fa-circle-o"></i>
+                                            {% endif %}
+                                            {{ milestone.text }} &nbsp;
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <label class="col-xs-4"> <b>Priority:</b> </label>
+                    <div class="col-xs-8">
+                        <div class="task-setting">
+                            <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                                <span class="task-setting-label"> {{ item.priority_id_title|default('Not Set')|truncate(10) }} </span>
+                                <span class="caret"></span> 
+                            </a>
+                            <ul class="dropdown-menu">
+                                {% for priority in priorities %}
+                                    <li> 
+                                        <a class="change-priority" href="#" task_id="{{ item.id }}" priority_id="{{ priority.value }}" label="{{ priority.text|truncate(10)  }}">
+                                            {% if priority.value == item.priority_id %}
+                                                <i class="fa fa-check text-red"></i>
+                                            {% else %}
+                                                <i class="fa fa-circle-o"></i>
+                                            {% endif %}
+                                            {{ priority.text }} &nbsp;
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 task-assigned-to">
+                    <b>Assigned To:</b><br> 
+                    {% set assignments_parameter =  json_object.fields.assignments %}
+                    {{ forms.input('assignments', 'checkbox', assignments_parameter.default.edit, null, null, null, null, assignments_parameter.readonly, assignments_parameter.parameters.options, assignments_parameter) }}
+                </div>
+
+                <div class="col-sm-12">
+                    <b>Documents:</b><br> 
+                    <small> 
+                        {% if item.documents|length > 0 %}
+                            {% for document in item.documents %}
+                                <ul>
+                                    <li>
+                                        <img src="{{ resized_image(document.document_file, 32, 32) }}" data-toggle="tooltip"  title="{{ client.user_id_name }}"/>
+                                        {{ document.document_title }}
+                                    </li>
+                                </ul>
+                            {% endfor %}
+                        {% endif %}
+                    </small> 
+
+                </div>
+
+
+            </div>
+            <div class="clear-both"></div>
+        </div>
+
+
+    </div>
+
+    <div class="task-submit-button text-center" style="display:none;">
+        <input class="btn btn-success btn-sm" name="id" value="Save" type="submit">
+    </div>
+
+    {{ forms.input('id', 'hidden', item.id) }}
+
+    <input class="form-id" name="id" value="{{ item.id }}" type="hidden">             
+
+    {{ forms.input('_token' ) }}  
+
+</form>
+
+
+<div class="headline">
+    <h4>Comments</h4>
+</div>
+
+{{ forms.input('comment', 'comment') }}
+
+
+
+<!-- Modal -->
+<div id="manageTaskModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <form class="task-single-form form-horizontal" action="{{ generate_url('projects.tasks.save') }}" method="POST">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit Sub Tasks</h4>
+                </div>
+                <div class="modal-body">
+
+                    {% set subtasks_parameter =  json_object.fields.subtasks %}
+                    {{ forms.input('subtasks', 'text', subtasks_parameter.default.edit, null, null, null, null, subtasks_parameter.readonly, subtasks_parameter.parameters.options, subtasks_parameter) }}
+                    {{ forms.input('id', 'hidden', item.id) }}
+                    {{ forms.input('return_url', 'hidden', base64_decode(document.current_url)) }}
+                    <div class="clr"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success">Save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+                    
+            {{ forms.input('_token' ) }} 
+        
+        </form>
+
+    </div>
+</div>

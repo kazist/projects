@@ -1,0 +1,248 @@
+{# empty Twig template #}
+
+{% import "form.macro.twig" as forms %}
+
+{{ set_assets('applications/Projects/assets/css/projects.css') }}
+{{ set_assets('applications/Projects/assets/js/projects.js') }}
+
+{% set milestones = json_object.fields.milestone_id.parameters.options %}
+{% set priorities = json_object.fields.priority_id.parameters.options %}
+{% set types = json_object.fields.type_id.parameters.options %}
+{% set status = json_object.fields.status.parameters.options %}
+{% set search = document.search %}
+<br>
+
+<form action="{{ generate_url('projects.tasks') }}" method="POST">
+
+    <div>
+        <div class="col-md-8">
+            <h1 class="component-header">Tasks List</h1>
+        </div>
+        <div class="col-md-4">
+            <a class="btn btn-success btn-xs pull-right" href="{{ generate_url('projects.tasks.add') }}">
+                <i class="fa fa-plus"></i>
+                Add Task
+            </a>
+
+
+        </div>
+    </div>
+
+    <div class="clear-both"></div>
+
+    <div class="project-task-search">
+        <div class="col-md-2 col-xs-6">
+            <label>Date</label><br>
+            {{ forms.input(' search.start_date', 'date', search.start_date|default('now'|date('Y-m-d'))) }}
+        </div>
+        <div class="col-md-2 all-fields">
+            <label>Project</label><br>
+            {% set project_id_parameter =  json_object.fields.project_id %}
+            {{ forms.input(' search.project_id', 'select', search.project_id, null, null, null, null, project_id_parameter.readonly, project_id_parameter.parameters.options, project_id_parameter ) }}
+        </div>
+        <div class="col-md-2 col-xs-6">
+            <label>Status</label><br>
+            {% set status_parameter =  json_object.fields.status %}
+            {{ forms.input(' search.status', 'select', search.status, null, null, null, null, status_parameter.readonly, status_parameter.parameters.options, status_parameter) }}
+        </div>
+        <div class="col-md-2 col-xs-6 ">
+            <label>Type</label><br>
+            {% set type_id_parameter =  json_object.fields.type_id %}
+            {{ forms.input(' search.type_id', 'select', search.type_id, null, null, null, null, type_id_parameter.readonly, type_id_parameter.parameters.options, type_id_parameter) }}
+        </div>
+        <div class="col-md-2 all-fields">
+            <label>Milestone</label><br>
+            {% set milestone_id_parameter =  json_object.fields.milestone_id %}
+            {{ forms.input(' search.milestone_id', 'select', search.milestone_id, null, null, null, null, milestone_id_parameter.readonly, milestone_id_parameter.parameters.options, milestone_id_parameter) }}
+        </div>
+        <div class="col-md-2 all-fields">
+            <label>Priority</label><br>
+            {% set priority_id_parameter =  json_object.fields.priority_id %}
+            {{ forms.input(' search.priority_id', 'select', search.priority_id, null, null, null, null, priority_id_parameter.readonly, priority_id_parameter.parameters.options, priority_id_parameter) }}
+        </div>
+        <div class="col-md-2 col-xs-6 ">
+            <label>
+                <a class="fa fa-search-plus advanced-search">All Fields</a>
+            </label>
+
+            <br>
+
+            <button class="btn btn-success btn-xs" type="input" >
+                <i class=" fa fa-search"></i>
+                Search
+            </button>
+
+            <a class="btn btn-danger btn-xs" href="{{ generate_url('projects.tasks', {'clear':'true'}) }}"> Reset</a>
+        </div>
+        <div class="col-md-3 col-xs-6 ">
+            <br>
+            <input class="mytask" type="checkbox" name="search[mytask]" value="1" {% if search.mytask== 1 %}checked="checked"{% endif %}><label> My Task</label> 
+            <input class="futuretask" type="checkbox" name="search[futuretask]" value="1" {% if search.futuretask == 1 %}checked="checked"{% endif %}><label>Future</label> 
+
+        </div>
+        <div class="clear-both"></div>
+    </div>
+
+    <div class="tasks-list">
+        {% if items|length > 0 %}
+            {% for item in items %}
+
+
+                {% set percent = (item.completed_subtasks/item.total_subtasks * 100)|round(1) %}
+
+                {% if not percent %}
+                    {% set percent = 1 %}
+                {% endif %}
+
+                <div class="task-item tag-box-v1 box-shadow shadow-effect-2 ">
+
+                    <h4>
+                        <a href="{{ generate_url('projects.tasks.detail', {'id':item.id}) }}">
+                            {{ item.title }}
+                        </a>
+                        <a class="btn btn-primary btn-xs" href="{{ generate_url('projects.tasks.edit', {'id':item.id}) }}">
+                            <i class="fa fa-pencil"></i> 
+                            Edit
+                        </a>
+                        <a class="btn {{ (item.closed)?'btn-default':'btn-danger' }} btn-xs pull-right close_open_task" href="#" task_id="{{ item.id }}"  closed="{{ (item.closed) ? 0 : 1 }}" label="{{ (not item.closed)? 'Open' : 'Close' }} ">
+                            <i class="fa fa-arrow-right"></i>
+                            <span class="close_open_label">{{ (item.closed)? 'Open' : 'Close' }} </span>
+                        </a>
+                    </h4>
+
+
+                    <div class="tasks-desc">
+                        {{ item.task|raw }}  
+                    </div>
+
+                    <small> 
+                        <b>Start:</b> 
+                        <i>
+                            {{ item.start_time|date('dS M y') }}  
+                        </i>
+                        <b>End:</b> 
+                        <i>
+                            {{ item.end_time|date('dS M y') }}
+                        </i>
+                    </small>
+
+                    <div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-4">
+                            <div class="task-setting">
+                                <b class="hidden-xs">Status : </b>
+                                <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                                    <span class="task-setting-label"> {{ item.status_title|default('Not Set')|truncate(10)  }}</span>
+                                    <span class="caret"></span> 
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for status_item in status %}
+                                        <li> 
+                                            <a class="change-status" href="#" task_id="{{ item.id }}" status="{{ status_item.value }}" label="{{ status_item.text|truncate(10)  }}">
+                                                {% if milestone.value == item.status %}
+                                                    <i class="fa fa-check text-red"></i>
+                                                {% else %}
+                                                    <i class="fa fa-circle-o"></i>
+                                                {% endif %}
+                                                {{ status_item.text }} &nbsp;
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-4">
+                            <div class="task-setting">
+                                <b class="hidden-xs">Milestone : </b>
+                                <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                                    <span class="task-setting-label"> {{ item.milestone_id_title|default('Not Set')|truncate(10) }} </span>
+                                    <span class="caret"></span> 
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for milestone in milestones %}
+                                        <li> 
+                                            <a class="change-milestone" href="#" task_id="{{ item.id }}" milestone_id="{{ milestone.value }}" label="{{ milestone.text|truncate(10)  }}">
+                                                {% if milestone.value == item.milestone_id %}
+                                                    <i class="fa fa-check text-red"></i>
+                                                {% else %}
+                                                    <i class="fa fa-circle-o"></i>
+                                                {% endif %}
+                                                {{ milestone.text }} &nbsp;
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-4">
+                            <div class="task-setting">
+                                <b class="hidden-xs">Priorities : </b>
+                                <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                                    <span class="task-setting-label"> {{ item.priority_id_title|default('Not Set')|truncate(10)  }}</span>
+                                    <span class="caret"></span> 
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for priority in priorities %}
+                                        <li> 
+                                            <a class="change-priority" href="#" task_id="{{ item.id }}" priority_id="{{ priority.value }}" label="{{ priority.text|truncate(10)  }}">
+                                                {% if priority.value == item.priority_id %}
+                                                    <i class="fa fa-check text-red"></i>
+                                                {% else %}
+                                                    <i class="fa fa-circle-o"></i>
+                                                {% endif %}
+                                                {{ priority.text }} &nbsp;
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="col-xs-6 col-sm-6 col-md-4">
+                            <div class="task-setting">
+                                <b class="hidden-xs">Types : </b>
+                                <a class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" href="#" title="More Actions"> 
+                                    <span class="task-setting-label">{{ item.type_id_title|default('Not Set')|truncate(10)  }}</span>
+                                    <span class="caret"></span> 
+                                </a>
+                                <ul class="dropdown-menu">
+                                    {% for type in types %}
+                                        <li> 
+                                            <a class="change-type" href="#" task_id="{{ item.id }}" type_id="{{ type.value }}" label="{{ type.text|truncate(10)  }}">
+                                                {% if type.value == item.type_id %}
+                                                    <i class="fa fa-check text-red"></i>
+                                                {% else %}
+                                                    <i class="fa fa-circle-o"></i>
+                                                {% endif %}
+                                                {{ type.text }} &nbsp;
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}%">
+                            {{ percent }}% Complete
+                        </div>
+                    </div>   
+                    <div class="clear-both"></div>
+                </div>
+
+            {% endfor %}            
+        {% endif %}
+
+        {% include "items.pagination.twig"%}
+
+    </div>
+
+    {{ forms.input('_token' ) }}  
+
+</form>
+

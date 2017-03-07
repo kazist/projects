@@ -1,0 +1,10 @@
+{
+    "name": "types",
+    "title": "Types Listing",
+    "explanation": "Types Listing",
+    "description": "Types Listing",
+    "version": 1,
+    "icon": "assets\/projects\/addons\/types\/icon.png",
+    "extension": "addon",
+    "path": "projects\/addons\/types\/"
+}

@@ -1,0 +1,23 @@
+
+{% if projectsummary.id %}
+
+    {{ set_assets('applications/Projects/Addons/ProjectSummary/assets/css/style.css') }}
+
+    {% set percent =( projectsummary.total_completed/projectsummary.total_tasks * 100)|round(1)  %}
+
+    {% if not percent %}
+        {% set percent = 1 %}
+    {% endif %}
+
+    <b>Project:</b>{{ projectsummary.title }}<br>
+    <b>Start Date:</b>{{ projectsummary.start_time|date('d M Y') }}<br>
+    <b>End Date:</b>{{ projectsummary.end_time|date('d M Y')  }}<br>
+    <b>Category:</b>{{ projectsummary.category_id_title }}<br>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}%">
+            {{ percent }}% Complete
+        </div>
+    </div>
+
+{% endif %}

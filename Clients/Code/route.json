@@ -1,0 +1,125 @@
+{
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Projects\\Clients\\Code\\Controllers\\Admin\\ClientsController::taskAction",
+            "unique_name": "admin.projects.clients.task",
+            "route": "admin/projects/clients/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "clients, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Client List",
+            "description": "Management of Clients.",
+            "controller": "Projects\\Clients\\Code\\Controllers\\Admin\\ClientsController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.projects.clients",
+            "route": "admin/projects/clients",
+            "arguments": "",
+            "keywords": "client, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Client  ",
+            "description": "Add Client .",
+            "controller": "Projects\\Clients\\Code\\Controllers\\Admin\\ClientsController::addAction",
+            "unique_name": "admin.projects.clients.add",
+            "route": "admin/projects/clients/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "client, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Client {{ item.name }}",
+            "description": "Edit Client {{ item.name }}.",
+            "controller": "Projects\\Clients\\Code\\Controllers\\Admin\\ClientsController::editAction",
+            "unique_name": "admin.projects.clients.edit",
+            "route": "admin/projects/clients/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "client, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Client Detail: {{ item.name }}",
+            "description": "Client Detail: {{ item.name }}",
+            "controller": "Projects\\Clients\\Code\\Controllers\\Admin\\ClientsController::detailAction",
+            "unique_name": "admin.projects.clients.detail",
+            "route": "admin/projects/clients/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "client, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Client Delete: {{ item.name }}",
+            "description": "Client Delete: {{ item.name }}",
+            "controller": "Projects\\Clients\\Code\\Controllers\\Admin\\ClientsController::deleteAction",
+            "unique_name": "admin.projects.clients.delete",
+            "route": "admin/projects/clients/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "client, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Client Save: {{ item.name }}",
+            "description": "Client Save: {{ item.name }}",
+            "controller": "Projects\\Clients\\Code\\Controllers\\Admin\\ClientsController::saveAction",
+            "unique_name": "admin.projects.clients.save",
+            "route": "admin/projects/clients/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "client, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

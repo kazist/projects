@@ -1,0 +1,125 @@
+{
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Projects\\Priorities\\Code\\Controllers\\Admin\\PrioritiesController::taskAction",
+            "unique_name": "admin.projects.priorities.task",
+            "route": "admin/projects/priorities/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "priorities, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Priority List",
+            "description": "Management of Priorities.",
+            "controller": "Projects\\Priorities\\Code\\Controllers\\Admin\\PrioritiesController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.projects.priorities",
+            "route": "admin/projects/priorities",
+            "arguments": "",
+            "keywords": "priority, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Priority  ",
+            "description": "Add Priority .",
+            "controller": "Projects\\Priorities\\Code\\Controllers\\Admin\\PrioritiesController::addAction",
+            "unique_name": "admin.projects.priorities.add",
+            "route": "admin/projects/priorities/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "priority, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Priority {{ item.name }}",
+            "description": "Edit Priority {{ item.name }}.",
+            "controller": "Projects\\Priorities\\Code\\Controllers\\Admin\\PrioritiesController::editAction",
+            "unique_name": "admin.projects.priorities.edit",
+            "route": "admin/projects/priorities/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "priority, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Priority Detail: {{ item.name }}",
+            "description": "Priority Detail: {{ item.name }}",
+            "controller": "Projects\\Priorities\\Code\\Controllers\\Admin\\PrioritiesController::detailAction",
+            "unique_name": "admin.projects.priorities.detail",
+            "route": "admin/projects/priorities/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "priority, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Priority Delete: {{ item.name }}",
+            "description": "Priority Delete: {{ item.name }}",
+            "controller": "Projects\\Priorities\\Code\\Controllers\\Admin\\PrioritiesController::deleteAction",
+            "unique_name": "admin.projects.priorities.delete",
+            "route": "admin/projects/priorities/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "priority, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Priority Save: {{ item.name }}",
+            "description": "Priority Save: {{ item.name }}",
+            "controller": "Projects\\Priorities\\Code\\Controllers\\Admin\\PrioritiesController::saveAction",
+            "unique_name": "admin.projects.priorities.save",
+            "route": "admin/projects/priorities/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "priority, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

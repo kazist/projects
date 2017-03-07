@@ -1,0 +1,152 @@
+{# empty Twig template #}
+
+{% import "form.macro.twig" as forms %}
+
+{{ set_assets('applications/Projects/assets/css/projects.css') }}
+{{ set_assets('applications/Projects/assets/js/projects.js') }}
+
+{% set percent = (item.total_completed/item.total_tasks * 100)|round(1) %}
+
+{% if not percent %}
+    {% set percent = 1 %}
+{% endif %}
+
+
+<div class="project-single">
+
+    <h1 class="component-header">
+        {{ item.title }}
+        <small> 
+            Date:
+            <b>
+                <i>
+                    {{ item.start_time|date('dS M y') }} - {{ item.end_time|date('dS M y') }}
+                </i>
+            </b>
+        </small>
+    </h1>
+
+    {{ item.description|striptags|raw }}
+
+    <div>
+        <br> 
+        <b>Project Leader:</b> 
+        {{ item.leader_id_name }}
+        <br> 
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}%">
+            {{ percent }}% Complete
+        </div>
+    </div>
+
+
+
+    <div>
+        <div class="col-sm-7">
+            <h4>
+                Tasks
+            </h4>
+
+            <table class="table table-responsive table-condensed">
+                <thead>
+                    <tr>
+                        <th>Task</th>
+                        <th>Progress</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% if item.tasks|length > 0 %}
+                        {% for task in item.tasks %}
+
+                            {% set percent = (task.completed_subtasks/task.total_subtasks * 100)|round(1) %}
+
+                            {% if not percent %}
+                                {% set percent = 1 %}
+                            {% endif %}
+
+                            <tr>
+                                <td>
+                                    <a href="{{ generate_url('projects.tasks.detail', {'id':task.id}) }}">
+                                        {{ task.title }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="{{ percent }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}%">
+                                            {{ percent }}% Complete
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+
+            <a class="btn btn-success btn-sm" href="{{ generate_url('projects.tasks', {'project_id':item.id}) }}">View Tasks List</a>
+
+        </div>
+
+        <div class="col-sm-5">
+
+            <div>
+                <b>Clients Rep.:</b><br> 
+                <small> 
+                    {% if item.clients|length > 0 %}
+                        {% for client in item.clients %}
+                            <img  class="img-circle" src="{{ resized_image(client.avatar_file, 32, 32) }}" data-toggle="tooltip"  title="{{ client.user_id_name }}"/>
+                        {% endfor %}
+                    {% endif %}
+                </small> 
+            </div>
+
+            <div>
+                <b>Assigned To:</b><br> 
+                <small> 
+                    {% if item.assignments|length > 0 %}
+                        {% for assignment in item.assignments %}
+                            <img  class="img-circle" src="{{ resized_image(assignment.avatar_file, 32, 32) }}" data-toggle="tooltip"  title="{{ client.user_id_name }}"/>
+                        {% endfor %}
+                    {% endif %}
+                </small> 
+            </div>
+
+            <div>
+                <b>Documents:</b><br> 
+                <small> 
+                    {% if item.documents|length > 0 %}
+                        {% for document in item.documents %}
+                            <ul>
+                                <li>
+                                    <img src="{{ resized_image(document.document_file, 32, 32) }}" data-toggle="tooltip"  title="{{ client.user_id_name }}"/>
+                                    {{ document.document_title }}
+                                </li>
+                            </ul>
+                        {% endfor %}
+                    {% endif %}
+                </small> 
+            </div>
+        </div>
+        <div class="clear-both"></div>
+    </div>
+
+    <div class="headline">
+        <h4>Comments</h4>
+    </div>
+
+    {{ forms.input('comment', 'comment') }}
+
+</div>
+
+<style>
+    .projects-list .project-single h3{
+        margin-bottom: 5px;
+    }
+
+    .projects-list .project-single{
+        padding:5px;
+    }
+</style>

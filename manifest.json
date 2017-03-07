@@ -1,0 +1,8 @@
+{
+    "name": "projects",
+    "title": "Project Manager",
+    "icon": "assets\/icons\/projects.png",
+    "extension": "component",
+    "path": "projects\/",
+    "description": "Project Manager"
+}

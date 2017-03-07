@@ -1,0 +1,43 @@
+{
+    "frontend": [
+        {
+            "title": "Sub-Task Save: {{ item.name }}",
+            "description": "Sub-Task Save: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Subtasks\\Code\\Controllers\\SubtasksController::saveAction",
+            "unique_name": "projects.tasks.subtasks.save",
+            "route": "projects/tasks/subtasks/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"],
+                "MODERATOR": ["can_add", "can_write", "can_writeown"],
+                "USER": ["can_add", "can_write", "can_writeown"]
+            }
+        }],
+    "backend": [{
+            "title": "Sub-Task Save: {{ item.name }}",
+            "description": "Sub-Task Save: {{ item.name }}",
+            "controller": "Projects\\Tasks\\Subtasks\\Code\\Controllers\\Admin\\SubtasksController::saveAction",
+            "unique_name": "admin.projects.tasks.subtasks.save",
+            "route": "admin/projects/tasks/subtasks/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "task, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

@@ -1,0 +1,175 @@
+{
+    "frontend": [{
+            "title": "Project List",
+            "description": "Management of Projects.",
+            "controller": "Projects\\Projects\\Code\\Controllers\\ProjectsController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "projects.projects",
+            "route": "projects/projects",
+            "arguments": "",
+            "keywords": "project, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Project Detail: {{ item.name }}",
+            "description": "Project Detail: {{ item.name }}",
+            "controller": "Projects\\Projects\\Code\\Controllers\\ProjectsController::detailAction",
+            "unique_name": "projects.projects.detail",
+            "route": "projects/projects/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "project, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Project Send Daily Task Summary ",
+            "description": "Project Send Daily Task Summary ",
+            "controller": "Projects\\Projects\\Code\\Controllers\\ProjectsController::sendDailyTaskSummaryAction",
+            "unique_name": "projects.projects.senddailytasksummary",
+            "route": "projects/projects/senddailytasksummary",
+            "arguments": {},
+            "keywords": "project, senddailytasksummary, ",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0
+        }],
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Projects\\Projects\\Code\\Controllers\\Admin\\ProjectsController::taskAction",
+            "unique_name": "admin.projects.projects.task",
+            "route": "admin/projects/projects/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "projects, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Project List",
+            "description": "Management of Projects.",
+            "controller": "Projects\\Projects\\Code\\Controllers\\Admin\\ProjectsController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.projects.projects",
+            "route": "admin/projects/projects",
+            "arguments": "",
+            "keywords": "project, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Project  ",
+            "description": "Add Project .",
+            "controller": "Projects\\Projects\\Code\\Controllers\\Admin\\ProjectsController::addAction",
+            "unique_name": "admin.projects.projects.add",
+            "route": "admin/projects/projects/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "project, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Project {{ item.name }}",
+            "description": "Edit Project {{ item.name }}.",
+            "controller": "Projects\\Projects\\Code\\Controllers\\Admin\\ProjectsController::editAction",
+            "unique_name": "admin.projects.projects.edit",
+            "route": "admin/projects/projects/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "project, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Project Detail: {{ item.name }}",
+            "description": "Project Detail: {{ item.name }}",
+            "controller": "Projects\\Projects\\Code\\Controllers\\Admin\\ProjectsController::detailAction",
+            "unique_name": "admin.projects.projects.detail",
+            "route": "admin/projects/projects/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "project, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Project Delete: {{ item.name }}",
+            "description": "Project Delete: {{ item.name }}",
+            "controller": "Projects\\Projects\\Code\\Controllers\\Admin\\ProjectsController::deleteAction",
+            "unique_name": "admin.projects.projects.delete",
+            "route": "admin/projects/projects/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "project, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Project Save: {{ item.name }}",
+            "description": "Project Save: {{ item.name }}",
+            "controller": "Projects\\Projects\\Code\\Controllers\\Admin\\ProjectsController::saveAction",
+            "unique_name": "admin.projects.projects.save",
+            "route": "admin/projects/projects/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "project, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

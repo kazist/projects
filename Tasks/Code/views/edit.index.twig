@@ -1,0 +1,109 @@
+{# empty Twig template #}
+
+{% import "form.macro.twig" as forms %}
+
+{{ set_assets('applications/Projects/assets/css/projects.css') }}
+{{ set_assets('applications/Projects/assets/js/projects.js') }}
+
+<h1>Add/Edit Task</h1>
+
+<form id="" class="form-horizontal" action="{{ generate_url('projects.tasks.save') }}" method="post" role="form" enctype="multipart/form-data">
+
+    <div>
+        <div class="col-sm-8">
+            {% set task_parameter =  json_object.fields.task %}
+
+            {{ forms.input('title', 'text', json_object.fields.title.default.edit, 'Title') }}
+
+            {% set task_parameter =  json_object.fields.task %}
+            {{ forms.input('task', 'editor', task_parameter.default.edit, 'Task', null, null, null, task_parameter.readonly, task_parameter.parameters.options, task_parameter) }}
+
+            <h3>Sub Tasks</h3>
+            {% set subtasks_parameter =  json_object.fields.subtasks %}
+            {{ forms.input('subtasks', 'text', subtasks_parameter.default.edit, null, null, null, null, subtasks_parameter.readonly, subtasks_parameter.parameters.options, subtasks_parameter) }}
+
+        </div>
+
+        <div class="col-sm-4">
+
+            <label>Project</label><br>
+            {% set project_id_parameter =  json_object.fields.project_id %}
+            {{ forms.input('project_id', 'select', project_id_parameter.default.edit, null, null, null, null, project_id_parameter.readonly, project_id_parameter.parameters.options, project_id_parameter ) }}
+
+            <label>Milestone</label><br>
+            {% set milestone_id_parameter =  json_object.fields.milestone_id %}
+            {{ forms.input('milestone_id', 'select', milestone_id_parameter.default.edit, null, null, null, null, milestone_id_parameter.readonly, milestone_id_parameter.parameters.options, milestone_id_parameter) }}
+
+            <label>Type</label><br>
+            {% set type_id_parameter =  json_object.fields.type_id %}
+            {{ forms.input('type_id', 'radio', type_id_parameter.default.edit, null, null, null, null, type_id_parameter.readonly, type_id_parameter.parameters.options, type_id_parameter) }}
+
+            <div>
+                <ul class="nav nav-tabs">
+                    <li class="active tab-duration">
+                        <a href="#tab-duration" data-toggle="tab" title="Duration">
+                            Duration
+                        </a>
+                    </li>
+                    <li class=" tab-url">
+                        <a href="#tab-url" data-toggle="tab" title="Url">
+                            Url
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <div class="tab-pane active" id="tab-duration">
+
+                        {% set starttime_parameter =  json_object.fields.start_time %}
+                        {% set endtime_parameter =  json_object.fields.end_time %}
+                        {% set duration_parameter =  json_object.fields.duration_id %}
+
+                        <label>Start Time</label><br>
+                        {{ forms.input('start_time', 'datetime', starttime_parameter.default.edit, null, null, null, null, starttime_parameter.readonly, starttime_parameter.parameters.options, starttime_parameter) }}
+                        <label>Duration</label><br>
+                        {{ forms.input('duration_id', 'select', duration_parameter.default.edit, null, null, null, null, duration_parameter.readonly, duration_parameter.parameters.options, duration_parameter) }}
+                        <label>End Time</label><br>
+                        {{ forms.input('end_time', 'datetime', endtime_parameter.default.edit, null, null, null, null, endtime_parameter.readonly, endtime_parameter.parameters.options, endtime_parameter) }}
+                    </div>
+
+                    <div class="tab-pane" id="tab-url">
+                        <label>Url</label><br>
+                        {{ forms.input('url', 'text', json_object.fields.url.default.edit) }}
+                    </div>
+                </div>
+            </div>
+
+            <h3>Documents</h3>
+            {% set document_parameter =  json_object.fields.documents %}
+            {{ forms.input('documents', 'media', document_parameter.default.edit, null, null, null, null, document_parameter.readonly, document_parameter.parameters.options, document_parameter) }}
+
+        </div>             
+    </div>
+
+    <div class="clr"></div>
+
+    <a class="btn btn-danger btn-sm" href="/kaziframework2/index-dev.php/projects/tasks" title="Cancel">Cancel</a>
+    <input class="btn btn-success btn-sm" name="id" value="Save" type="submit">
+    <br>
+    <br>
+
+
+    {{ forms.input('id', 'hidden', item.id) }}
+
+    <input class="form-id" name="id" value="{{ item.id }}" type="hidden">
+    <input class="form-task_name" name="task" value="save" type="hidden">
+    <input class="form-view" name="view" value="" type="hidden">
+    <input class="form-twig" name="twig" value="" type="hidden">
+    <input class="form-return_url" name="return_url" value="" type="hidden">
+
+    {% if get_media_exist() %}
+
+        {% include "media.modal.twig"  %}  
+        {% include "link.modal.twig" %}  
+    {% endif %}
+
+    {{ forms.input('_token' ) }} 
+
+</form>

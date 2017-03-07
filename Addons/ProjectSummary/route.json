@@ -1,0 +1,22 @@
+{
+    "frontend": [{
+            "title": "ProjectSummary List",
+            "description": "Management of ProjectSummary.",
+            "controller": "Projects\\Addons\\ProjectSummary\\Controllers\\ProjectSummaryController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "projects.addons.projectsummary",
+            "route": "projects/addons/projectsummary",
+            "arguments": "",
+            "keywords": "projects, list, addons",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }]
+
+} 	

@@ -1,0 +1,49 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Jun 29, 2015, 4:22:26 PM
+    Author     : sbc
+*/
+.block-priorities {
+    padding:5px;
+}
+
+.block-priorities .priority{
+    margin-bottom: 10px;
+    padding: 5px;
+    border-bottom:1px dotted #ddd;
+}
+
+.block-priorities .priority:hover{
+    background: #eee;
+}
+
+.block-priorities .priority img{
+    margin:5px;
+}
+
+
+.block-priorities .priority h4{
+    margin:0;
+    font-size:20px;
+    color:#333;
+}
+.block-priorities .priority h4 a{
+    color:#333;
+}
+
+.block-priorities .priority small{
+    color:#999;
+}
+
+.block-tabular-priorities .tabular-priority{
+    margin-bottom: 20px;
+    border-bottom:1px dotted #bbb;
+}
+
+.block-tabular-priorities .tabular-priority h4{
+    height: 30px;
+}

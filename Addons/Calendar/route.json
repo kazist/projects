@@ -1,0 +1,22 @@
+{
+    "frontend": [{
+            "title": "Calendar List",
+            "description": "Management of Calendar.",
+            "controller": "Projects\\Addons\\Calendar\\Controllers\\CalendarController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "projects.addons.calendar",
+            "route": "projects/addons/calendar",
+            "arguments": "",
+            "keywords": "projects, calendar, addons",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }]
+
+} 	

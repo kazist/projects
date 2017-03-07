@@ -1,0 +1,66 @@
+[{
+        "name": "project_task_default_status",
+        "label": "Default Status",
+        "default": "",
+        "type": "select",
+        "source": {
+            "table": {
+                "name": "#__projects_status",
+                "order": ["title ASC"],
+                "value": "id",
+                "text": "title"
+            }
+        }
+    }, {
+        "name": "project_task_default_milestone_id",
+        "label": "Default Milestone",
+        "default": "",
+        "type": "select",
+        "source": {
+            "table": {
+                "name": "#__projects_milestones",
+                "order": ["title ASC"],
+                "value": "id",
+                "text": "title"
+            }
+        }
+    }, {
+        "name": "project_task_default_priority_id",
+        "label": "Default Priority",
+        "default": "",
+        "type": "select",
+        "source": {
+            "table": {
+                "name": "#__projects_priorities",
+                "order": ["title ASC"],
+                "value": "id",
+                "text": "title"
+            }
+        }
+    }, {
+        "name": "project_task_default_type_id",
+        "label": "Default Type",
+        "default": "",
+        "type": "select",
+        "source": {
+            "table": {
+                "name": "#__projects_types",
+                "order": ["title ASC"],
+                "value": "id",
+                "text": "title"
+            }
+        }
+    }, {
+        "name": "project_task_status_change_email",
+        "label": "Status Change Email",
+        "default": "",
+        "type": "select",
+        "source": {
+            "table": {
+                "name": "#__projects_status",
+                "order": ["title ASC"],
+                "value": "id",
+                "text": "title"
+            }
+        }
+    }]

@@ -1,0 +1,125 @@
+{
+    "backend": [{
+            "title": "General Tasks",
+            "description": "General Tasks.",
+            "controller": "Projects\\Durations\\Code\\Controllers\\Admin\\DurationsController::taskAction",
+            "unique_name": "admin.projects.durations.task",
+            "route": "admin/projects/durations/task",
+            "permissions": "can_write",
+            "arguments": "",
+            "keywords": "durations, task",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_write"],
+                "ADMIN": ["can_write"]
+            }
+        }, {
+            "title": "Duration List",
+            "description": "Management of Durations.",
+            "controller": "Projects\\Durations\\Code\\Controllers\\Admin\\DurationsController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "admin.projects.durations",
+            "route": "admin/projects/durations",
+            "arguments": "",
+            "keywords": "duration, list",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Add Duration  ",
+            "description": "Add Duration .",
+            "controller": "Projects\\Durations\\Code\\Controllers\\Admin\\DurationsController::addAction",
+            "unique_name": "admin.projects.durations.add",
+            "route": "admin/projects/durations/add",
+            "permissions": "can_add",
+            "arguments": {},
+            "keywords": "duration, add",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add"],
+                "ADMIN": ["can_add"]
+            }
+        }, {
+            "title": "Edit Duration {{ item.name }}",
+            "description": "Edit Duration {{ item.name }}.",
+            "controller": "Projects\\Durations\\Code\\Controllers\\Admin\\DurationsController::editAction",
+            "unique_name": "admin.projects.durations.edit",
+            "route": "admin/projects/durations/edit/{id}",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "duration, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }, {
+            "title": "Duration Detail: {{ item.name }}",
+            "description": "Duration Detail: {{ item.name }}",
+            "controller": "Projects\\Durations\\Code\\Controllers\\Admin\\DurationsController::detailAction",
+            "unique_name": "admin.projects.durations.detail",
+            "route": "admin/projects/durations/detail/{id}",
+            "permissions": "can_view, can_viewown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "duration, list, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }, {
+            "title": "Duration Delete: {{ item.name }}",
+            "description": "Duration Delete: {{ item.name }}",
+            "controller": "Projects\\Durations\\Code\\Controllers\\Admin\\DurationsController::deleteAction",
+            "unique_name": "admin.projects.durations.delete",
+            "route": "admin/projects/durations/delete/{id}",
+            "permissions": "can_delete, can_deleteown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "duration, delete, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_delete", "can_deleteown"],
+                "ADMIN": ["can_delete", "can_deleteown"]
+            }
+        }, {
+            "title": "Duration Save: {{ item.name }}",
+            "description": "Duration Save: {{ item.name }}",
+            "controller": "Projects\\Durations\\Code\\Controllers\\Admin\\DurationsController::saveAction",
+            "unique_name": "admin.projects.durations.save",
+            "route": "admin/projects/durations/save",
+            "permissions": "can_add, can_write, can_writeown",
+            "arguments": {
+                "id": null
+            },
+            "keywords": "duration, save, {{ item.name }}",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 1,
+            "roles": {
+                "SUPER_ADMIN": ["can_add", "can_write", "can_writeown"],
+                "ADMIN": ["can_add", "can_write", "can_writeown"]
+            }
+        }]
+} 	

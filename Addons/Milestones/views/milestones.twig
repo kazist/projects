@@ -1,0 +1,10 @@
+
+{{ set_assets('applications/Projects/Addons/Milestones/assets/css/style.css') }}
+
+{% if template == 'listing' %}
+    {% include "listing.twig" ignore missing %}
+{% elseif template == 'tabular' %}
+    {% include "tabular.twig" ignore missing %}
+{% else %}
+    {% include "listing.twig" ignore missing %}
+{% endif %}

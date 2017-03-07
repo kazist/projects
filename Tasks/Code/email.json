@@ -1,0 +1,28 @@
+{
+    "layout": [{
+            "tracking_id": "1",
+            "unique_name": "projects.tasks.assignment",
+            "subject": "Your are now assigned: {{ task.title }}.",
+            "sms": "Your are now assigned: {{ task.title }}.",
+            "body": "Dear {{ user.name }},<br><br>You are assigned this <b>{{ task.title }}</b>.<br><p>    {{ task.task }}</p><br>If you need any help, please let us know so that we can assist you.<br><br>Thank You"
+        }, {
+            "tracking_id": "2",
+            "unique_name": "projects.tasks.status_change",
+            "subject": "[Completed] : [{{ task.title }}] Task {{ task.status_title }}.",
+            "sms": "[Completed] : [{{ task.title }}] Task {{ task.status_title }}.",
+            "body": "Dear {{ user.name }},<br><br>This Task is now completed: <b>{{ task.title }}</b>.<br><p>    {{ task.task }}</p><br>If you need any help,please let us know so that we can assist you.<br><br>Thank You"
+        }, {
+            "tracking_id": "3",
+            "unique_name": "projects.tasks.comments",
+            "subject": "New Comment For [{{ task.title }}] Task.",
+            "sms": "New Comment For [{{ task.title }}] Task.",
+            "body": "New Comment"
+        }, {
+            "tracking_id": "4",
+            "unique_name": "projects.tasks.closed",
+            "subject": "[Closed]  [{{ task.title }}] Task closed.",
+            "sms": "[Closed]  [{{ task.title }}] Task closed.",
+            "body": "Task Closed"
+
+        }]
+}

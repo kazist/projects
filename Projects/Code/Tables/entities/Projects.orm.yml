@@ -1,0 +1,109 @@
+Projects\Projects\Code\Tables\Projects:
+  table: projects_projects
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    leader_id:
+      name: leader_id
+      type: integer
+      length: 11
+      nullable: true
+    category_id:
+      name: category_id
+      type: integer
+      length: 11
+      nullable: true
+    client_id:
+      name: client_id
+      type: integer
+      length: 11
+      nullable: true
+    duration_id:
+      name: duration_id
+      type: integer
+      length: 11
+      nullable: true
+    title:
+      name: title
+      type: string
+      length: 255
+      nullable: false
+    description:
+      name: description
+      type: text
+      nullable: true
+    start_time:
+      name: start_time
+      type: datetime
+      nullable: true
+    end_time:
+      name: end_time
+      type: datetime
+      nullable: true
+    completed:
+      name: completed
+      type: integer
+      length: 11
+      nullable: true
+    total_components:
+      name: total_components
+      type: integer
+      length: 11
+      nullable: true
+    total_tasks:
+      name: total_tasks
+      type: integer
+      length: 11
+      nullable: true
+    total_completed:
+      name: total_completed
+      type: integer
+      length: 11
+      nullable: true
+    total_comments:
+      name: total_comments
+      type: integer
+      length: 11
+      nullable: true
+    published:
+      name: published
+      type: integer
+      length: 11
+      nullable: true
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: true
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: true
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: true
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: true
+  indexes:
+    leader_id_index:
+      columns: [leader_id]
+    category_id_index:
+      columns: [category_id]
+    client_id_index:
+      columns: [client_id]
+    duration_id_index:
+      columns: [duration_id]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks

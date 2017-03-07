@@ -1,0 +1,22 @@
+{
+    "frontend": [{
+            "title": "Milestones List",
+            "description": "Management of Milestones.",
+            "controller": "Projects\\Addons\\Milestones\\Controllers\\MilestonesController::indexAction",
+            "permissions": "can_view, can_viewown",
+            "unique_name": "projects.addons.milestones",
+            "route": "projects/addons/milestones",
+            "arguments": "",
+            "keywords": "projects, list, addons",
+            "priority": "0.5",
+            "changefreq": "weekly",
+            "login_required": 0,
+            "roles": {
+                "SUPER_ADMIN": ["can_view", "can_viewown"],
+                "ADMIN": ["can_view", "can_viewown"],
+                "MODERATOR": ["can_view", "can_viewown"],
+                "USER": ["can_view", "can_viewown"]
+            }
+        }]
+
+} 	

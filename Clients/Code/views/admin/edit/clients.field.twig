@@ -1,0 +1,90 @@
+{# empty Twig template #}
+
+{% import "form.macro.twig" as forms %}
+
+{% set item = get_context('item') %}
+
+{% if item.id  %}
+
+    {% set parameters = {'client_id':item.id} %}
+
+    {% set autocomplete_setting = callFunction( "Projects.Clients.Code.Models.ClientsModel", 'getMemberAutoCompleteSetting' ) %}
+    {% set members = callFunction( "Projects.Clients.Code.Models.ClientsModel", 'getClientMembers', parameters ) %}
+
+    <div>
+
+        <h5>Search Members</h5>
+
+        <div>
+            <div class="col-sm-8">
+                {{ forms.input('memberseach', 'autocomplete', null, null, null, null, null, null, null, autocomplete_setting) }}
+            </div>
+            <div class="col-sm-4">
+                <a class="btn btn-primary btn-sm btn-flat add-members-to-client"> Add Members To Client </a>
+            </div>
+        </div>
+
+        <table class="table table-condensed member_list">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th class="text-right">Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% if members|length > 0 %}
+                    {% for member in members %}
+                        <tr>
+                            <td>
+                                {{ member.user_id_name }}
+                                <input type="hidden" name="form[members][exist][]" value="{{ member.client_id }}" >
+                            </td>
+                            <td class="text-right"><a class='btn btn-danger btn-xs delete-tr-membersearch'><i class='fa fa-close'></i></a></td>
+                        </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix"></div>
+{% endif %}
+
+<script>
+    jQuery(document).ready(function () {
+
+        jQuery('.delete-tr-membersearch').click(function () {
+            deleteTrMemberSearch(jQuery(this));
+        });
+
+        jQuery('.add-members-to-client').click(function () {
+
+            var title = jQuery('#memberseach_autocomplete').val();
+            var id = jQuery('#memberseach').val();
+
+            var html = " <tr>" +
+                    " <td>" + title + "<input type=\"hidden\" name=\"form[members][new][]\" value=\"" + id + "\" ></td>" +
+                    " <td>" +
+                    "<a class='btn btn-danger btn-xs delete-tr-membersearch'><i class='fa fa-close'></i></a>"
+                    + "</td>" +
+                    " </tr>";
+
+            html = jQuery(html);
+
+            html.find('.delete-tr-membersearch').click(function () {
+                deleteTrMemberSearch(jQuery(this));
+            });
+
+            jQuery('.member_list tbody').append(html);
+
+        });
+    });
+
+    function deleteTrMemberSearch(this_element) {
+        this_element.closest('tr').remove();
+    }
+
+
+</script>
+

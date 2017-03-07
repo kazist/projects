@@ -1,0 +1,10 @@
+{
+    "name": "calendar",
+    "title": "Calendar Listing",
+    "explanation": "Calendar Listing",
+    "description": "Calendar Listing",
+    "version": 1,
+    "icon": "assets\/projects\/addons\/calendar\/icon.png",
+    "extension": "addon",
+    "path": "projects\/addons\/calendar\/"
+}

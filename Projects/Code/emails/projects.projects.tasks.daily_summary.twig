@@ -1,0 +1,23 @@
+Dear {{ user.name }},
+<br>
+
+<br>
+
+This is the summary for the project <b>{{ project.title|raw }}</b>.
+
+<ul>
+    {% for task in tasks %}
+        <li>
+            <a href="{{ generate_url('projects.tasks.detail', {id:task.id}) }}">
+                {{ task.title|raw }}
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+
+<br>
+If you need any help, please let us know so that we can assist you.
+<br>
+
+<br>
+Thank You

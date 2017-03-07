@@ -1,0 +1,40 @@
+
+{{ set_assets('applications/Projects/Addons/Calendar/assets/css/style.css') }}
+{{ set_assets('assets/js/highcharts/highcharts.js') }}
+{{ set_assets('assets/js/kazist/kazist_chart.js') }}
+
+<div class="clearfix"></div>
+<div class="task_chart"></div>
+<div class="clearfix"></div>
+<script>
+
+    var chart_element = jQuery('.task_chart');
+    var legend = {
+        align: 'left',
+        layout: 'vertical',
+        verticalAlign: 'top',
+        floating: false
+    }
+
+    var summary_data = [{
+            name: 'New Tasks',
+            data: [{{ new_tasks|raw }}]
+        }, {
+            name: 'Closed Tasks',
+            data: [{{ closed_tasks|raw }}]
+        }];
+
+    jQuery(document).ready(function () {
+
+        kazist_chart.chart_categories = [{{ montharr|raw }}];
+
+        kazist.loadChart(chart_element, 'area', 'Task Chart', 'Result', summary_data);
+    })
+
+</script>
+
+<style>
+    .task_chart{
+        height: 330px;
+    }
+</style>

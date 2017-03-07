@@ -1,0 +1,10 @@
+{
+    "title": "Projects",
+    "alias": "projects",
+    "table_name": "projects_projects",
+    "title_field": "title",
+    "content_field": "description",
+    "image_field": "",
+    "published": "1",
+    "is_processed": "0"
+}

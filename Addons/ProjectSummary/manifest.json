@@ -1,0 +1,10 @@
+{
+    "name": "projectsummary",
+    "title": "ProjectSummary Listing",
+    "explanation": "ProjectSummary Listing",
+    "description": "ProjectSummary Listing",
+    "version": 1,
+    "icon": "assets\/projects\/addons\/projectsummary\/icon.png",
+    "extension": "addon",
+    "path": "projects\/addons\/projectsummary\/"
+}

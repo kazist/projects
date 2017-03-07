@@ -1,0 +1,23 @@
+Dear {{ user.name }},
+<br>
+
+<br>
+
+This Task is now completed: <b>{{ task.title|raw }}</b>.
+
+<br>
+
+<p>
+    {{ task.task|raw }}
+</p>
+
+<center>
+    <a href="{{ generate_url('projects.tasks.detail', {'id':item.id},0) }}"> View Task Detail</a>
+</center>
+
+<br>
+If you need any help, please let us know so that we can assist you.
+<br>
+
+<br>
+Thank You

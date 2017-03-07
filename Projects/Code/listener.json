@@ -1,0 +1,7 @@
+[{
+        "tracking_id": "1",
+        "class": "Projects\\Projects\\Code\\Listeners\\ProjectsListener",
+        "title": "Projects Projects Event Listener",
+        "description": "Listen For Projects Events and Modify Projects Detail"
+    }]
+

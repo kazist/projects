@@ -1,0 +1,50 @@
+Projects\Tasks\Subtasks\Code\Tables\Subtasks:
+  table: projects_tasks_subtasks
+  type: entity
+  id:
+    id:
+      type: integer
+      generator: { strategy: AUTO }
+  fields:
+    task_id:
+      name: task_id
+      type: integer
+      length: 11
+      nullable: false
+    subtask:
+      name: subtask
+      type: text
+      nullable: false
+    closed:
+      name: closed
+      type: integer
+      length: 11
+      nullable: true
+    created_by:
+      name: created_by
+      type: integer
+      length: 11
+      nullable: true
+    date_created:
+      name: date_created
+      type: datetime
+      nullable: true
+    modified_by:
+      name: modified_by
+      type: integer
+      length: 11
+      nullable: true
+    date_modified:
+      name: date_modified
+      type: datetime
+      nullable: true
+  indexes:
+    task_id_index:
+      columns: [task_id]
+  lifecycleCallbacks:
+    prePersist:
+      - onPrePersist
+      - onPrePersistCallbacks
+    preUpdate:
+      - onPreUpdate
+      - onPreUpdateCallbacks
