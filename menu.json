@@ -2,57 +2,67 @@
     "title": "Projects",
     "description": "Projects",
     "alias": "projects",
-    "icon": "fa-bar-chart",
+    "icon": "fa fa-wrench",
     "home_link": "projects\/projects",
     "is_core": "1",
     "menulist": [{
             "title": "Projects",
             "alias": "admin_projects_projects",
             "url": "admin/projects/projects",
+            "icon": "fa fa-wrench",
             "children": []
         }, {
             "title": "Tasks",
             "alias": "admin_projects_tasks",
             "url": "admin/projects/tasks",
+            "icon": "fa fa-tasks",
             "children": []
         }, {
             "title": "Categories",
             "alias": "admin_projects_categories",
             "url": "admin/projects/categories",
+            "icon": "fa fa-navicon",
             "children": []
         }, {
             "title": "Members",
             "alias": "admin_projects_members",
             "url": "admin/projects/members",
+            "icon": "fa fa-users",
             "children": []
         }, {
             "title": "Clients",
             "alias": "admin_projects_clients",
             "url": "admin/projects/clients",
+            "icon": "fa fa-address-card-o",
             "children": []
         }, {
             "title": "Setting",
             "alias": "admin_projects_settings",
             "url": "admin/projects/settings",
+            "icon": "fa fa-cogs",
             "children": [{
                     "title": "Milestones",
                     "alias": "admin_projects_milestones",
                     "url": "admin/projects/milestones",
+                    "icon": "fa fa-tasks",
                     "children": []
                 }, {
                     "title": "Priorities",
                     "alias": "admin_projects_priorities",
                     "url": "admin/projects/priorities",
+                    "icon": "fa fa-list",
                     "children": []
                 }, {
                     "title": "Types",
                     "alias": "admin_projects_types",
                     "url": "admin/projects/types",
+                    "icon": "fa fa-filter",
                     "children": []
                 }, {
                     "title": "Status",
                     "alias": "admin_projects_status",
                     "url": "admin/projects/status",
+                    "icon": "fa fa-toggle-on",
                     "children": []
                 }]
         }]
