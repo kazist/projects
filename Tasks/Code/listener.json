@@ -1,7 +1,0 @@
-[{
-        "tracking_id": "1",
-        "class": "Projects\\Tasks\\Code\\Listeners\\TasksListener",
-        "title": "Projects Tasks Event Listener",
-        "description": "Listen For Tasks Events and Modify Projects Detail"
-    }]
-
