@@ -3,25 +3,25 @@
             "tracking_id": "1",
             "unique_name": "projects.projects.assignment",
             "subject": "Your are now a member of {{ project.title }} Project Team.",
-            "sms": "Your are now a member of {{ project.title }} Project Team.",
+            "short_body": "Your are now a member of {{ project.title }} Project Team.",
             "body": "Dear {{ user.name }},<br><br>You are the team leader for  <b>{{ project.title }}</b> Project.<br><br>If you need any help, please let us know so that we can assist you.<br><br>Thank You"
         }, {
             "tracking_id": "2",
             "unique_name": "projects.projects.leader",
             "subject": "Your are now the project leader of {{ project.title }} Project.",
-            "sms": "Your are now the project leader of {{ project.title }} Project.",
+            "short_body": "Your are now the project leader of {{ project.title }} Project.",
             "body": "Dear {{ user.name }},<br><br>You have been added as Team Member to <b>{{ project.title }}</b><br><br>If you need any help, please let us know so that we can assist you.<br><br><br><br>Thank You"
         }, {
             "tracking_id": "3",
             "unique_name": "projects.projects.tasks.daily_summary",
             "subject": "Summary Tasks for [{{ project.title }}] Project.",
-            "sms": "Summary Tasks for [{{ project.title }}] Project.",
+            "short_body": "Summary Tasks for [{{ project.title }}] Project.",
             "body": "Dear {{ user.name }},<br><br>You have been added as Team Member to <b>{{ project.title }}</b><br><br>If you need any help, please let us know so that we can assist you.<br><br><br><br>Thank You"
         }, {
             "tracking_id": "4",
             "unique_name": "projects.projects.comments",
             "subject": "New Comment For [{{ project.title }}] Project.",
-            "sms": "New Comment For [{{ project.title }}] Project.",
+            "short_body": "New Comment For [{{ project.title }}] Project.",
             "body": "New Comment"
         }]
 }
