@@ -173,7 +173,7 @@ jQuery(document).ready(function () {
         var subtask_id = this_element.attr('subtask_id');
         var closed = this_element.attr('closed');
         var label_str = this_element.attr('label');
-        var return_url = kazist_document.document.current_url;
+        var return_url = kazist_document.current_url;
         
         var data_object = {"form[id]": subtask_id, "form[closed]": closed,"form[return_url]": btoa(return_url)};
 
