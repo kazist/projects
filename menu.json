@@ -4,6 +4,7 @@
     "alias": "projects",
     "icon": "fa fa-wrench",
     "home_link": "projects\/projects",
+    "path": "applications/Projects",
     "is_core": "1",
     "menulist": [{
             "title": "Projects",
